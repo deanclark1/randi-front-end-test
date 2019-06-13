@@ -1,0 +1,32 @@
+<div>
+  <div class="card login-card shadow">
+    <div class="card-body">
+      <h5 class="card-title text-center">Log In</h5>
+      
+  <form [formGroup]="loginFormGroup" (ngSubmit)="LogIn(loginFormGroup)">
+      <div *ngIf="errorMessage !== '' " class="alert alert-danger" role="alert">
+          {{errorMessage}}
+        </div>
+    <div class="form-group">
+        <small *ngIf="email?.invalid && email?.touched" id="emailHelp" class="form-text text-danger"> Enter valid email</small>
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
+      
+    </div>
+    <div class="form-group">
+        <small *ngIf="password?.invalid && password?.touched" id="emailHelp" class="form-text text-danger"> Enter password</small>
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password" placeholder="Password">
+      
+    </div>
+
+    <div class="text-center">
+      <button type="submit" [disabled]="loginFormGroup?.invalid || isProcessing" class="btn btn-primary ">Log In
+        <i class="fa fa-spinner fa-spin" *ngIf="isProcessing"></i>
+      </button>
+    </div>
+  </form>
+    </div>
+  </div>
+  
+</div>
